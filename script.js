@@ -5,6 +5,10 @@ let placeholderCount = 4;
 
 // Function to create and append a new input
 function addNewInput() {
+    console.log("Adding new input...");
+
+    
+    
     
     const newInput = document.createElement("input");
     newInput.type = "text";
@@ -14,6 +18,7 @@ function addNewInput() {
 
     // Append the new input to the mapinput container
     mapInput.appendChild(newInput);
+    
 
 }
 
@@ -22,14 +27,18 @@ function addNewInput() {
 mapInput.addEventListener("keyup", function (event) {
     if (event.key) {
         const lastInput = mapInput.lastElementChild;
-        if (lastInput.value) {
+        if (lastInput.value.trim()) {
             addNewInput();
         }
     }
 });
  
-// add the new input when clicked the btn
-btn.addEventListener("click", addNewInput);
+
+btn.addEventListener("click", function() {
+    event.preventDefault(); // Prevent default form submission
+  
+    addNewInput();
+  });
 
 
 
